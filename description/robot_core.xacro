@@ -139,7 +139,7 @@
         <geometry>
           <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
         </geometry>
-        <material name="black"/>
+        <material name="blue"/>
       </visual>
       <collision>
         <origin rpy="1.5708 0 0"/>
