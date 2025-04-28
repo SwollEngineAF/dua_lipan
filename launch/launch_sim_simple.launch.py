@@ -9,7 +9,7 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     robot_description_path = PathJoinSubstitution([
-        FindPackageShare("articubot_one"),
+        FindPackageShare("lipan"),
         "description",
         "robot.urdf.xacro"
     ])
