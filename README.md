@@ -16,7 +16,6 @@ This repo documents the complete setup of the **Lipan 2.0** robot platform, deve
 
 ---
 
-
 ## 🧰 Setup Instructions
 
 ### 1. Install ROS 2 Jazzy
