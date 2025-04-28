@@ -49,7 +49,7 @@ cd ~/dev_ws/src
 
 ### 4. Clone the Articubot Repo
 ```bash
-git clone https://github.com/SwollEngineAF/dua_lipan.git articubot_one
+git clone https://github.com/SwollEngineAF/lipan.git lipan
 cd ~/dev_ws
 ```
 
@@ -68,7 +68,7 @@ source ~/dev_ws/install/setup.bash
 ## 🚀 Launching the Simulation
 After a successful build:
 ```bash
-ros2 launch articubot_one launch_sim_simple.launch.py
+ros2 launch lipan launch_sim_simple.launch.py
 ```
 If RViz2 and Gazebo do not appear automatically, you can launch them manually:
 ```bash
@@ -98,7 +98,7 @@ rviz2
 
 ### 🌀 Iteration 1: Simulation Foundations (April 7 – April 13)
 - Set up ROS 2 Humble on dev machine
-- Clone articubot_one and run in Gazebo
+- Clone lipan and run in Gazebo
 - Replace Gazebo world with palm/obstacles layout
 - Simulate RGB camera and verify image stream
 - Detect dummy FFB using OpenCV in sim images
