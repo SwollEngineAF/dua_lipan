@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="robot_arm">
+
+  <!-- Optional: Include reusable inertial macros if you have them -->
+  <!-- <xacro:include filename="inertial_macros.xacro"/> -->
+
+  <!-- ===================== LINKS ===================== -->
+  <link name="arm_base">
+    <inertial>
+      <mass value="1.6004"/>
+      <origin xyz="0 -0.063005 0" rpy="0 0 0"/>
+      <inertia ixx="0.00552" iyy="0.00352" izz="0.00553" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://lipan/description/meshes/arm_base.stl"/>
+      </geometry>
+      <material name=""><color rgba="0.79 0.82 0.93 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://lipan/description/meshes/arm_base.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="bicep">
+    <inertial>
+      <mass value="1.1198"/>
+      <origin xyz="0.12821 0 0.052492" rpy="0 0 0"/>
+      <inertia ixx="0.00125" iyy="0.00729" izz="0.00682" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://lipan/description/meshes/bicep.stl"/>
+      </geometry>
+      <material name=""><color rgba="0.79 0.82 0.93 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://lipan/description/meshes/bicep.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="bottom_wrist">
+    <inertial>
+      <mass value="0.27721"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00104" iyy="0.00038" izz="0.00106" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.13522" rpy="3.14 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://lipan/description/meshes/wrist.stl"/>
+      </geometry>
+      <material name=""><color rgba="0.79 0.82 0.93 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.13522" rpy="3.14 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://lipan/description/meshes/wrist.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="elbow">
+    <inertial>
+      <mass value="0.84845"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0008" iyy="0.00358" izz="0.00337" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.05163 0.20994" rpy="0 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://lipan/description/meshes/elbow.stl"/>
+      </geometry>
+      <material name=""><color rgba="0.79 0.82 0.93 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.05163 0.20994" rpy="0 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://lipan/description/meshes/elbow.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="top_wrist">
+    <inertial>
+      <mass value="0.27721"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00104" iyy="0.00038" izz="0.00106" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.13522" rpy="3.14 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://lipan/description/meshes/wrist.stl"/>
+      </geometry>
+      <material name=""><color rgba="0.79 0.82 0.93 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.13522" rpy="3.14 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://lipan/description/meshes/wrist.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ===================== JOINTS ===================== -->
+  <joint name="arm_base_joint" type="continuous">
+    <parent link="base_link"/> <!-- Attach externally -->
+    <child link="arm_base"/>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="shoulder_joint" type="continuous">
+    <parent link="arm_base"/>
+    <child link="bicep"/>
+    <origin xyz="-0.05166 0.0 0.20271" rpy="0 0 1.5708"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="bottom_wrist_joint" type="continuous">
+    <parent link="bicep"/>
+    <child link="bottom_wrist"/>
+    <origin xyz="0.0 -0.05194 0.269" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="elbow_joint" type="continuous">
+    <parent link="bottom_wrist"/>
+    <child link="elbow"/>
+    <origin xyz="0.0 0 0.13522" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="top_wrist_joint" type="continuous">
+    <parent link="elbow"/>
+    <child link="top_wrist"/>
+    <origin xyz="0.0 0 0.20994" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- ===================== TRANSMISSIONS ===================== -->
+  <xacro:macro name="transmission_block" params="joint_name motor_name">
+    <transmission name="${joint_name}_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="${motor_name}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="${joint_name}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:transmission_block joint_name="arm_base_joint" motor_name="arm_base_motor"/>
+  <xacro:transmission_block joint_name="shoulder_joint" motor_name="shoulder_motor"/>
+  <xacro:transmission_block joint_name="bottom_wrist_joint" motor_name="bottom_wrist_motor"/>
+  <xacro:transmission_block joint_name="elbow_joint" motor_name="elbow_motor"/>
+  <xacro:transmission_block joint_name="top_wrist_joint" motor_name="top_wrist_motor"/>
+
+  <!-- ===================== GAZEBO ROS CONTROL ===================== -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+      <controlPeriod>0.001</controlPeriod>
+      <legacyModeNS>false</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+</robot>
