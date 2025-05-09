@@ -111,12 +111,6 @@
   </link>
 
   <!-- ===================== JOINTS ===================== -->
-  <joint name="arm_base_joint" type="continuous">
-    <parent link="base_link"/> <!-- Attach externally -->
-    <child link="arm_base"/>
-    <origin xyz="0 0 0.3" rpy="0 0 0"/>
-    <axis xyz="0 0 1"/>
-  </joint>
 
   <joint name="shoulder_joint" type="continuous">
     <parent link="arm_base"/>
