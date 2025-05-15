@@ -12,7 +12,12 @@
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
-  <export>
-    <build_type>ament_cmake</build_type>
-  </export>
+<export>
+  <build_type>ament_cmake</build_type>
+  <gazebo_ros>
+    <plugin_path>lib</plugin_path>
+    <media_path>share/${PROJECT_NAME}/description/meshes</media_path>
+  </gazebo_ros>
+</export>
+
 </package>
