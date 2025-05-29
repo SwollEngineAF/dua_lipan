@@ -139,5 +139,36 @@ rviz2
 
 ---
 
+## 🧩 Hardware Add-ons (Adhoc Integration)
+
+As of May 2025, the Lipan 2.0 platform includes tested modules beyond the base simulation stack. These components were integrated and tested independently in real-world setups.
+
+### 📸 Pixy2 Vision Sensor
+
+* Connected to **Raspberry Pi 5** via USB.
+* Streams object coordinates over serial (used for signature-based detection).
+* Used in: `arduino/sketch_may26d/sketch_may26d.ino`, `pixy_stream.py`
+
+### 🦾 Robot Arm (PCA9685 Servo Driver)
+
+* Controlled using **Adafruit PCA9685** via I2C.
+* Four active channels for: Base, Left Arm, Right Arm, Gripper.
+* Calibrated PWM ranges defined in `arduino/Arm/src/main.cpp`
+* Commands can be sent via serial: e.g., `B:500`, `L:450`, `G:1`.
+
+### ⚙️ Differential Drive (HW-130)
+
+* Implemented as basic motor control with `digitalWrite()` test on Arduino Uno.
+* Setup stored in: `arduino/DiffDRive/`
+* Placeholder for real-world DC motor control testing (PWM/direction).
+
+### 🛠 Example Scripts
+
+* `pixy_stream.py` – Serial stream reader for Pixy2.
+* `servo_gui.py` – Tkinter-based servo tester GUI.
+* `sketch_may26[a–e].ino` – Standalone sketches for debugging servos and Pixy2.
+
+---
+
 ## ✍️ Author
 **Syahiid Rasidi** – [@SwollEngineAF](https://github.com/SwollEngineAF)
