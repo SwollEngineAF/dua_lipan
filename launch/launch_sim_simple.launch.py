@@ -14,7 +14,7 @@ def generate_launch_description():
         "robot.urdf.xacro"
     ])
 
-    robot_description = Command(['xacro ', robot_description_path])
+    robot_description = Command(['xacro', robot_description_path])
 
     return LaunchDescription([
         Node(
