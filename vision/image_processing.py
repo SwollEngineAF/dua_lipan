@@ -30,3 +30,7 @@ def main(args=None):
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()
+    cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
