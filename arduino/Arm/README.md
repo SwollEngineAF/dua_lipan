@@ -29,9 +29,9 @@ text lines and immediately control the servos:
 
 ```
 B:<pwm>  set base servo PWM (150–550)
-R:<pwm>  set right arm servo PWM
-L:<pwm>  set left arm servo PWM
-G:<0|1>  open (0) or close (1) the gripper
+R:<pwm>  set right arm servo PWM (350–550)
+L:<pwm>  set left arm servo PWM (380–550)
+G:<0|1>  open (0) or close (1) the gripper (300–450)
 ```
 
 Example:
@@ -40,7 +40,16 @@ B:500
 G:1
 ```
 
-The safe PWM ranges are defined in [`src/main.cpp`](src/main.cpp).
+### Safe PWM Ranges
+
+These limits match the definitions in [`src/main.cpp`](src/main.cpp):
+
+| DOF            | PWM Range |
+| -------------- | --------- |
+| Base rotation  | 150–550   |
+| Right arm      | 350–550   |
+| Left arm       | 380–550   |
+| Gripper        | 300–450 (close → open) |
 
 ## Startup Behaviour
 On reset the sketch executes a short sequence:
